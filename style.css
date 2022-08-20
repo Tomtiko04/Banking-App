@@ -94,3 +94,38 @@ nav {
     text-align: center;
     display: none;
 }
+
+.hide {
+    display: none;
+}
+
+.intruder h1 {
+    font-size: 3.5rem;
+    line-height: 30px;
+}
+
+.intruder p {
+    font-size: 1.9rem;
+    line-height: 60px;
+    margin-top: 1em;
+}
+
+.bank-intro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 17em;
+    text-align: center;
+}
+
+.bank-intro h1 {
+    font-size: 3.5rem;
+    line-height: 30px;
+}
+
+.bank-intro p {
+    font-size: 1.9rem;
+    line-height: 60px;
+    margin-top: 1em;
+}
