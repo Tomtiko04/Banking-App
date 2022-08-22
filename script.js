@@ -25,9 +25,9 @@ const intruder = document.querySelector('.intruder');
 const bankIntro = document.querySelector('.bank-intro');
 
 const account1 = {
-    owner: 'Jonas Schmedtmann',
+    owner: 'Ogunneye Oyinkansola',
     movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
-    interestRate: 1.2, // %
+    interestRate: 1.2,
     pin: 1111,
 
     movementsDates: [
