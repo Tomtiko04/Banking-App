@@ -98,7 +98,7 @@ const account4 = {
 
 const account5 = {
     owner: 'Ogunneye Sofia',
-    movements: [200, -200, 340, -300, -20, 50, 400, -460],
+    movements: [1000, -200, 240, -300, -20, 50, 200, -460],
     interestRate: 0.7,
     pin: 5555,
     
