@@ -80,7 +80,7 @@ const account3 = {
 
 const account4 = {
     owner: 'Oyegunle Aisha',
-    movements: [200, -200, 340, -300, -20, 50, 400, -460],
+    movements: [100, -100, 340, 300, -20, 150, 200, -460],
     interestRate: 0.7,
     pin: 4444,
     
