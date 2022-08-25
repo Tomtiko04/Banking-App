@@ -114,4 +114,4 @@ const account5 = {
     ],
 };
 
-const accounts = [account1];
+const accounts = [account1, account2];
