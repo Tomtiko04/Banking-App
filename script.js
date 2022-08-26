@@ -250,3 +250,54 @@ const startLogOutTimer = function() {
 
 //Event handler
 let currentAccount, timer;
+
+btnLogin.addEventListener('click', function(e) {
+    //prevent the form button from submitting and causing a reload
+    //default behaviour of html with submit button
+    e.preventDefault();
+
+    currentAccount = accounts.find(function(acc) {
+        return acc.username === inputLoginUsername.value;
+    });
+
+    if (currentAccount && currentAccount.pin === Number(inputLoginPin.value)) {
+        // Display UI and message
+        labelWelcome.textContent = `Welcome Back, ${currentAccount.owner.split(' ')[0]}`;
+        containerApp.style.opacity = 100;
+
+        //current date
+        const now = new Date();
+        const day = `${now.getDate()}`.padStart(2, 0);
+        const month = `${now.getDate() + 1}`.padStart(2, 0);
+        const year = now.getFullYear();
+        const hour = `${now.getHours()}`.padStart(2, 0);
+        const min = `${now.getMinutes()}`.padStart(2, 0);
+        labelDate.textContent = `${day}/${month}/${year}, ${hour}:${min}`;
+        //clear the input field
+        inputLoginUsername.value = inputLoginPin.value = '';
+        inputLoginPin.blur();
+        inputLoginUsername.blur();
+
+        //The log out timemer
+        if (timer) clearInterval(timer);
+        timer = startLogOutTimer();
+
+        //Updating the UI Design
+        updateUI(currentAccount);
+
+        //Welcome page
+        bankIntro.style.display = 'none';
+
+        //ntruder page
+        intruder.style.display = 'none';
+        containerApp.style.visibility = 'visible';
+    } else {
+        // Intruder page
+        console.log('shit');
+        intruder.style.display = 'block';
+        bankIntro.style.display = 'none';
+        containerApp.style.visibility = 'hidden';
+        inputLoginUsername.value = inputLoginPin.value = '';
+    }
+    console.log(currentAccount);
+});
