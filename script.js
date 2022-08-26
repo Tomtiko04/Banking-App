@@ -164,3 +164,36 @@ const calcDisplayBalance = function(acc) {
     }, 0);
     labelBalance.textContent = `${acc.balance.toFixed(2)}€`;
 };
+
+const calcDisplaySummary = function(acc) {
+    // calculate all deposit
+    const incomes = acc.movements.filter(function(mov) {
+        return mov > 0;
+    }).reduce(function(accumulator, cur, i, arr) {
+        return accumulator + cur;
+    }, 0);
+    //return income;
+    labelSumIn.textContent = `${incomes.toFixed(2)}€`;
+
+    // calculate all withdraws
+    const out = acc.movements.filter(function(mov) {
+        return mov < 0;
+    }).reduce(function(accumulator, cur, i, arr) {
+        return accumulator + cur;
+    });
+    labelSumOut.textContent = `${Math.abs(out)}€`;
+
+    // calculate all interest
+    //NOTE the map to create and calculate an array for intrest,filter to remove intrest
+    // lower than 1 and add all by reduce 
+    const interest = acc.movements.filter(function(mov) {
+        return mov > 0;
+    }).map(function(deposit) {
+        return deposit * acc.interestRate / 100;
+    }).filter(function(cur, i, arr) {
+        return cur >= 1;
+    }).reduce(function(accumulator, cur) {
+        return accumulator + cur;
+    })
+    labelSumInterest.textContent = `${interest.toFixed(2)}€`;
+};
