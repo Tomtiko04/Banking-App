@@ -288,7 +288,7 @@ btnLogin.addEventListener('click', function(e) {
         //Welcome page
         bankIntro.style.display = 'none';
 
-        //ntruder page
+        //Intruder page
         intruder.style.display = 'none';
         containerApp.style.visibility = 'visible';
     } else {
