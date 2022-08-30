@@ -301,3 +301,36 @@ btnLogin.addEventListener('click', function(e) {
     }
     console.log(currentAccount);
 });
+
+//Transfer money
+btnTransfer.addEventListener('click', function(e) {
+    e.preventDefault();
+    const amount = Number(inputTransferAmount.value);
+    const receiverAcc = accounts.find(
+        acc => acc.username === inputTransferTo.value
+    );
+    console.log(amount, receiverAcc);
+    inputTransferAmount.value = inputTransferTo.value = '';
+
+    if (amount > 0 &&
+        receiverAcc &&
+        currentAccount.balance >= amount &&
+        receiverAcc.username !== currentAccount.username) {
+        console.log('Transfer valid');
+        //Doing the Transfer
+        currentAccount.movements.push(-amount);
+        receiverAcc.movements.push(amount);
+
+        //Add transfer date
+        currentAccount.movementsDates.push(new Date().toISOString());
+        receiverAcc.movementsDates.push(new Date().toISOString());
+
+        // Reset timer
+        clearInterval(timer);
+        timer = startLogOutTimer();
+
+        //Updating the UI Design
+        updateUI(currentAccount);
+    }
+});
+
